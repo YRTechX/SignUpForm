@@ -25,8 +25,8 @@ const AppButton: React.FC<AppButtonProps> = ({
 }) => {
     return (
         <button
-            onClick={onClick} // Handle click event
-            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} focus:outline-none ${disabled}`}
+            onClick={onClick}
+            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} focus:outline-none ${disabled} hover:opacity-80 transition`}
         >
             {children}
         </button>

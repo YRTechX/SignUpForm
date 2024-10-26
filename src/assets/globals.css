@@ -11,6 +11,9 @@
     --font-family: "Inter", sans-serif;
     --card-shadow: 0px 5px 20px 0px #6c758b33;
     --logo-color: #20496c;
+    --input-bg: #f8f9fc;
+    --input-placeholder-color: #c3cad5;
+    --black-color: #030e16;
 }
 
 body {

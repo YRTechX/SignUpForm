@@ -12,6 +12,9 @@ module.exports = {
                 "form-color": "var(--form-color)",
                 "link-color": "var(--link-color)",
                 "logo-color": "var(--logo-color)",
+                "input-bg": "var(--input-bg)",
+                "input-placeholder-color": "var(--input-placeholder-color)",
+                "black-color": "var( --black-color)",
             },
             boxShadow: {
                 "card-shadow": "var(--card-shadow)",
