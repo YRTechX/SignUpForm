@@ -6,14 +6,18 @@ module.exports = {
             colors: {
                 "form-bg": "var(--form-bg)",
                 "button-bg": "var(--button-bg)",
-                "main-color": "var(--main-color)",
+                "gray-color": "var(--gray-color)",
                 "heading-color": "var(--heading-color)",
                 "form-info-color": "var(--form-info-color)",
                 "form-color": "var(--form-color)",
                 "link-color": "var(--link-color)",
+                "logo-color": "var(--logo-color)",
             },
             boxShadow: {
                 "card-shadow": "var(--card-shadow)",
+            },
+            backgroundImage: {
+                "sign-up": "url('@/assets/images/signUpBg.png')",
             },
         },
     },
