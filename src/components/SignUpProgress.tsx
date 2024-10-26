@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AppButton from "@/components/UI/AppButton";
+import AppSlider from "@/components/UI/AppSlider";
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
@@ -137,6 +138,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
             <AppButton onClick={setSuccess}>Success</AppButton>
             <AppButton onClick={minusSuccess}>minus Success</AppButton>
             {/* Кнопки навигации */}
+
             <CSSTransition
                 in={progress > 0}
                 timeout={500}
