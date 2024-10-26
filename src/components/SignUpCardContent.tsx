@@ -1,6 +1,5 @@
 import React from "react";
 
-// Интерфейс для пропсов
 interface SignUpCardContentProps {
     logo?: React.ReactNode;
     logoTitle?: String;
@@ -10,7 +9,6 @@ interface SignUpCardContentProps {
     footer?: React.ReactNode;
 }
 
-// Компонент с типизированными пропсами
 const SignUpCardContent: React.FC<SignUpCardContentProps> = ({
     logo,
     logoTitle,
