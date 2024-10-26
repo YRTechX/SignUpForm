@@ -12,6 +12,9 @@ module.exports = {
                 "form-color": "var(--form-color)",
                 "link-color": "var(--link-color)",
             },
+            boxShadow: {
+                "card-shadow": "var(--card-shadow)",
+            },
         },
     },
     plugins: [],

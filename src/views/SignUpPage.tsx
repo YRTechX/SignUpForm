@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import SignUp from "@/components/SignUp";
+import SignUpProgress from "@/components/SignUpProgress";
 const SignUpPage = () => {
+    const [step, setStep] = useState<number>(1);
+    const [progress, setProgress] = useState<number>(1);
     return (
-        <div className="flex items-center justify-center h-screen">
+        <>
             <h2 className="text-2xl">Registration Page</h2>
-            <SignUp />
-        </div>
+
+            <div className="flex h-screen">
+                <SignUpProgress
+                    step={step}
+                    progress={progress}
+                ></SignUpProgress>
+                <SignUp />
+            </div>
+        </>
     );
 };
 

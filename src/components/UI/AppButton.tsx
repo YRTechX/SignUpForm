@@ -8,6 +8,8 @@ interface AppButtonProps {
     paddingX?: string;
     paddingY?: string;
     children: React.ReactNode;
+    onClick?: () => void;
+    disabled?: Boolean;
 }
 
 const AppButton: React.FC<AppButtonProps> = ({
@@ -18,10 +20,13 @@ const AppButton: React.FC<AppButtonProps> = ({
     paddingX = "px-5",
     paddingY = "py-3",
     children,
+    disabled = false,
+    onClick,
 }) => {
     return (
         <button
-            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} focus:outline-none`}
+            onClick={onClick} // Handle click event
+            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} focus:outline-none ${disabled}`}
         >
             {children}
         </button>

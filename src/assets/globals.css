@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+    --form-bg: #113a5b;
+    --button-bg: #32abf2;
+    --main-color: #4f637d;
+    --heading-color: #134267;
+    --form-info-color: #96caf7;
+    --form-color: #5d7fa3;
+    --link-color: #32abf2;
+    --font-family: "Inter", sans-serif;
+    --card-shadow: 0px 5px 20px 0px #6c758b33;
+}
+
+body {
+    font-family: var(--font-family);
+}
