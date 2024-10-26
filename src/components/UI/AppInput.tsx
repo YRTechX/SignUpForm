@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { EyeOffIcon, EyeIcon } from "@heroicons/react/outline";
 
 interface AppInputProps {
     bgColor?: string;
@@ -8,35 +9,64 @@ interface AppInputProps {
     placeholder?: string;
     paddingX?: string;
     paddingY?: string;
-    onChange?: () => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     disabled?: boolean;
     type?: string;
     isError?: boolean;
+    width?: string;
+    icon?: React.ReactNode; // Иконка для инпута
 }
 
 const AppInput: React.FC<AppInputProps> = ({
     bgColor = "bg-input-bg",
     color = "text-black-color",
-    fontSize = "text-sm",
-    borderRadius = "rounded-md",
+    fontSize = "text-base",
+    borderRadius = "",
     paddingX = "px-4",
     paddingY = "py-2.5",
     disabled = false,
     type = "text",
     placeholder = "",
+    width = "w-full",
     onChange,
     isError = false,
+    icon,
 }) => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    // Функция для переключения видимости пароля
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
     return (
-        <input
-            onChange={onChange}
-            type={type}
-            placeholder={placeholder}
-            disabled={disabled}
-            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} transition ${
-                disabled ? "opacity-50 cursor-not-allowed" : "hover:opacity-80"
-            } ${isError ? "border border-red-600" : "border border-gray-300"}`}
-        />
+        <div className={`relative ${width}`}>
+            <input
+                onChange={onChange}
+                type={
+                    type === "password" && !showPassword ? "password" : "text"
+                }
+                placeholder={placeholder}
+                disabled={disabled}
+                className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} ${width} focus:outline-none transition placeholder-gray ${
+                    isError ? "border border-red-600" : "border border-input-bg"
+                } ${icon || type == "password" ? "pr-8" : ""}`}
+            />
+            {type === "password" && (
+                <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute right-2 w-5 h-5 translate-y-1/2"
+                    disabled={disabled}
+                >
+                    {showPassword ? (
+                        <EyeOffIcon className="text-eye-icon-color" />
+                    ) : (
+                        <EyeIcon className="text-eye-icon-color" />
+                    )}
+                </button>
+            )}
+        </div>
     );
 };
 

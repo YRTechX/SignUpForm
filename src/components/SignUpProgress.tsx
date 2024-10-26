@@ -5,6 +5,7 @@ import {
     ChevronRightIcon,
     CheckIcon,
 } from "@heroicons/react/solid";
+import { CSSTransition } from "react-transition-group";
 
 interface SignUpProgressProps {
     step: number;
@@ -50,7 +51,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
     ];
 
     return (
-        <div className="relative bg-form-bg text-white flex flex-col justify-between p-10 w-full max-w-[568px]">
+        <div className="relative bg-form-bg text-white flex flex-col justify-between p-10 basis-[40%] max-w-[568px] min-w-[450px]">
             <ul className="space-y-12">
                 {stepsText.map((stepData, index) => (
                     <li
@@ -136,28 +137,53 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
             <AppButton onClick={setSuccess}>Success</AppButton>
             <AppButton onClick={minusSuccess}>minus Success</AppButton>
             {/* Кнопки навигации */}
-            <div className="flex justify-between mt-5">
-                <AppButton
-                    bgColor={isBackActive ? "#134267" : "transparent"}
-                    color={isBackActive ? "text-white" : "text-gray-400"}
-                    onClick={prevStep}
-                    disabled={!isBackActive}
-                >
-                    <span className="flex items-center">
-                        <ChevronLeftIcon className="w-5 h-5 mr-2" /> Back
-                    </span>
-                </AppButton>
-                <AppButton
-                    bgColor={isNextActive ? "#134267" : "transparent"}
-                    color={isNextActive ? "text-white" : "text-gray-400"}
-                    onClick={nextStep}
-                    disabled={!isNextActive}
-                >
-                    <span className="flex items-center">
-                        Next <ChevronRightIcon className="w-5 h-5 ml-2" />
-                    </span>
-                </AppButton>
-            </div>
+            <CSSTransition
+                in={progress > 0}
+                timeout={500}
+                classNames="fade"
+                unmountOnExit
+            >
+                <div className="flex justify-between mt-5">
+                    <AppButton
+                        bgColor={
+                            isBackActive
+                                ? "bg-progress-handle-bg"
+                                : "transparent"
+                        }
+                        color={
+                            isBackActive
+                                ? "text-progress-handle-active-color"
+                                : "text-gray-color"
+                        }
+                        onClick={prevStep}
+                        width="w-max"
+                        disabled={!isBackActive}
+                        icon={<ChevronLeftIcon className="w-5 h-5" />}
+                        iconPosition="left"
+                    >
+                        Back
+                    </AppButton>
+                    <AppButton
+                        bgColor={
+                            isNextActive
+                                ? "bg-progress-handle-bg"
+                                : "transparent"
+                        }
+                        color={
+                            isNextActive
+                                ? "text-progress-handle-active-color"
+                                : "text-gray-color"
+                        }
+                        onClick={nextStep}
+                        width="w-max"
+                        disabled={!isNextActive}
+                        icon={<ChevronRightIcon className="w-5 h-5" />}
+                        iconPosition="right"
+                    >
+                        Next
+                    </AppButton>
+                </div>
+            </CSSTransition>
         </div>
     );
 };

@@ -1,7 +1,9 @@
 import React from "react";
 import SignUpCardContent from "@/components/SignUpCardContent";
 import logoImage from "@/assets/images/chadLogo.png";
-
+import AppFormGroup from "@/components/UI/AppFormGroup";
+import AppInput from "@/components/UI/AppInput";
+import AppButton from "@/components/UI/AppButton";
 const SignUp = () => {
     return (
         <div className="flex h-screen flex-1 justify-center items-center bg-sign-up">
@@ -12,48 +14,32 @@ const SignUp = () => {
                 description="Go live in 10 minutes! Our self-service widget empowers your customers to manage orders and track shipments 24/7 without driving you crazy."
                 main={
                     <form className="space-y-6">
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-700">
-                                Email
-                            </label>
-                            <input
+                        <AppFormGroup label="Email">
+                            <AppInput
                                 type="email"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="megachad@trychad.com"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-700">
-                                Your name
-                            </label>
-                            <input
-                                type="text"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="Mega Chad"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block mb-2 text-sm font-medium text-gray-700">
-                                Password
-                            </label>
-                            <input
+                            ></AppInput>
+                        </AppFormGroup>
+                        <AppFormGroup label="Your name">
+                            <AppInput placeholder="Mega Chad"></AppInput>
+                        </AppFormGroup>
+                        <AppFormGroup label="Your name">
+                            <AppInput
                                 type="password"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Enter password"
-                            />
-                        </div>
+                            ></AppInput>
+                        </AppFormGroup>
 
-                        <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                            Create account
-                        </button>
+                        <AppButton>Create account</AppButton>
                     </form>
                 }
                 footer={
-                    <p className="text-center text-gray-600">
+                    <p className="text-center text-xs text-gray-color">
                         Already have an account?{" "}
-                        <a href="#" className="text-blue-500">
+                        <a
+                            href="#"
+                            className="text-link-color hover:opacity-80"
+                        >
                             Login
                         </a>
                     </p>

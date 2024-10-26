@@ -18,7 +18,7 @@ const SignUpCardContent: React.FC<SignUpCardContentProps> = ({
     footer,
 }) => {
     return (
-        <div className="w-1/2 bg-white flex flex-col justify-center rounded-lg shadow-card-shadow px-10 py-16">
+        <div className="w-1/2 min-w-[400px] bg-white flex flex-col justify-center rounded-lg shadow-card-shadow px-10 py-16">
             {/* Проверяем, передан ли логотип */}
             {logo && (
                 <div className="flex mb-6">
@@ -40,9 +40,7 @@ const SignUpCardContent: React.FC<SignUpCardContentProps> = ({
 
             {/* Проверяем, передано ли описание */}
             {description && (
-                <p className="text-center text-gray-color mb-8 text-sm">
-                    {description}
-                </p>
+                <p className="text-gray-color mb-8 text-sm">{description}</p>
             )}
 
             {/* Проверяем, передан ли основной контент */}

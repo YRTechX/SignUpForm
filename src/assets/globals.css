@@ -14,8 +14,37 @@
     --input-bg: #f8f9fc;
     --input-placeholder-color: #c3cad5;
     --black-color: #030e16;
+    --eye-icon-color: #50627d;
+    --progress-handle-bg: #134267;
+    --progress-handle-active-color: #93a8c1;
 }
 
 body {
     font-family: var(--font-family);
+}
+.placeholder-gray::placeholder {
+    color: var(--input-placeholder-color);
+    opacity: 1;
+}
+
+.placeholder-gray::-ms-input-placeholder {
+    color: var(--input-placeholder-color);
+}
+.fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fade-exit-active {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }

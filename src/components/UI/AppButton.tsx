@@ -8,8 +8,11 @@ interface AppButtonProps {
     paddingX?: string;
     paddingY?: string;
     children: React.ReactNode;
+    disabled?: boolean;
+    width?: string;
     onClick?: () => void;
-    disabled?: Boolean;
+    icon?: React.ReactNode;
+    iconPosition?: "left" | "right";
 }
 
 const AppButton: React.FC<AppButtonProps> = ({
@@ -21,14 +24,26 @@ const AppButton: React.FC<AppButtonProps> = ({
     paddingY = "py-3",
     children,
     disabled = false,
+    width = "w-full",
     onClick,
+    icon,
+    iconPosition = "left",
 }) => {
     return (
         <button
             onClick={onClick}
-            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} focus:outline-none ${disabled} hover:opacity-80 transition`}
+            disabled={disabled}
+            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} ${width} focus:outline-none transition flex items-center justify-center ${
+                !disabled ? "hover:opacity-80" : ""
+            }`}
         >
+            {icon && iconPosition === "left" && (
+                <div className="mr-2">{icon}</div>
+            )}
             {children}
+            {icon && iconPosition === "right" && (
+                <div className="ml-2">{icon}</div>
+            )}
         </button>
     );
 };

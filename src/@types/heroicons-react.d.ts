@@ -8,5 +8,7 @@ declare module "@heroicons/react/solid" {
         SVGProps<SVGSVGElement>
     >;
     export const CheckIcon: ForwardRefExoticComponent<SVGProps<SVGSVGElement>>;
+    export const EyeOffIcon: ForwardRefExoticComponent<SVGProps<SVGSVGElement>>;
+    export const EyeIcon: ForwardRefExoticComponent<SVGProps<SVGSVGElement>>;
     // Add more icons here as needed
 }

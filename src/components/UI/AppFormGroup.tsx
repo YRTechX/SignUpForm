@@ -14,7 +14,7 @@ const AppFormGroup: React.FC<AppFormGroupProps> = ({
     return (
         <div className="mb-4">
             {label && (
-                <label className="block mb-2 text-sm font-medium text-gray-700">
+                <label className="block mb-4 text-xs font-medium text-gray-color">
                     {label}
                 </label>
             )}

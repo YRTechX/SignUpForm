@@ -14,7 +14,11 @@ module.exports = {
                 "logo-color": "var(--logo-color)",
                 "input-bg": "var(--input-bg)",
                 "input-placeholder-color": "var(--input-placeholder-color)",
-                "black-color": "var( --black-color)",
+                "black-color": "var(--black-color)",
+                "eye-icon-color": "var(--eye-icon-color)",
+                "progress-handle-bg": "var(--progress-handle-bg)",
+                "progress-handle-active-color":
+                    "var(--progress-handle-active-color)",
             },
             boxShadow: {
                 "card-shadow": "var(--card-shadow)",
