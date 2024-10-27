@@ -21,6 +21,9 @@ module.exports = {
                     "var(--progress-handle-active-color)",
                 "slider-dots-color": "var(--slider-dots-color)",
                 "slider-dots-active-color": "var(--slider-dots-active-color)",
+                "mobile-progress-gray": "var(--mobile-progress-gray)",
+                "progress-btn-disabled-color":
+                    "var(--progress-btn-disabled-color)",
             },
             boxShadow: {
                 "card-shadow": "var(--card-shadow)",
@@ -28,6 +31,9 @@ module.exports = {
             backgroundImage: {
                 "sign-up": "url('@/assets/images/signUpBg.png')",
                 "progress-bg-gradient": "var(--progress-bg-gradient)",
+            },
+            screens: {
+                desktop: "1440px",
             },
         },
     },

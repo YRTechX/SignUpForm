@@ -24,6 +24,8 @@
         #0d3251 0%,
         #19476c 103.05%
     );
+    --mobile-progress-gray: #c9d3e0;
+    --progress-btn-disabled-color: #c3cad5;
 }
 
 body {

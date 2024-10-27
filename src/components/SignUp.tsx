@@ -6,7 +6,7 @@ import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
 const SignUp = () => {
     return (
-        <div className="flex h-screen flex-1 justify-center items-center bg-sign-up">
+        <div className="flex flex-1 justify-center items-center bg-sign-up">
             <SignUpCardContent
                 logo={<img src={logoImage} alt="logo" />}
                 logoTitle="Chad"

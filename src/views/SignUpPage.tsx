@@ -6,9 +6,9 @@ const SignUpPage = () => {
     const [progress, setProgress] = useState<number>(1);
     return (
         <>
-            <h2 className="text-2xl">Registration Page</h2>
+            {/* <h2 className="text-2xl">Registration Page</h2> */}
 
-            <div className="flex h-screen">
+            <div className="desktop:flex h-screen">
                 <SignUpProgress
                     step={step}
                     progress={progress}
