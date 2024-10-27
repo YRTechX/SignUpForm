@@ -3,6 +3,7 @@ import React from "react";
 interface SignUpCardContentProps {
     logo?: React.ReactNode;
     logoTitle?: String;
+    progressBar?: React.ReactNode;
     title?: React.ReactNode;
     description?: React.ReactNode;
     main?: React.ReactNode;
@@ -12,13 +13,14 @@ interface SignUpCardContentProps {
 const SignUpCardContent: React.FC<SignUpCardContentProps> = ({
     logo,
     logoTitle,
+    progressBar,
     title,
     description,
     main,
     footer,
 }) => {
     return (
-        <div className="w-1/2 min-w-[400px] bg-white flex flex-col justify-center rounded-lg shadow-card-shadow px-10 py-16">
+        <div className="w-full max-md:h-full md:w-[540px] bg-white flex flex-col justify-center rounded-lg shadow-card-shadow px-10 md:py-16 py-4">
             {logo && (
                 <div className="flex mb-6">
                     {logo}
@@ -29,6 +31,8 @@ const SignUpCardContent: React.FC<SignUpCardContentProps> = ({
                     )}
                 </div>
             )}
+
+            {progressBar}
 
             {title && (
                 <h2 className="text-2xl font-semibold mb-4 text-heading-color">

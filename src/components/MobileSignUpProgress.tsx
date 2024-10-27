@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppButton from "@/components/UI/AppButton";
 import {
     ChevronLeftIcon,
@@ -6,25 +6,31 @@ import {
     CheckIcon,
 } from "@heroicons/react/solid";
 
-interface MobileSignUpProgressProps {
+interface SignUpProgressProps {
     step: number;
     progress: number;
     stepsCount: number;
-    nextStep: () => void;
-    prevStep: () => void;
-    isNextActive: boolean;
-    isBackActive: boolean;
 }
 
-const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
-    step,
+const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
+    {
+        /*  step,
     progress,
-    stepsCount,
-    nextStep,
-    prevStep,
-    isNextActive,
-    isBackActive,
-}) => {
+    stepsCount, */
+    }
+) => {
+    const [step, setStep] = useState<number>(1);
+    const [progress, setProgress] = useState<number>(3);
+    const stepsCount = 4;
+    const nextStep = () => {
+        setStep(step + 1);
+    };
+
+    const prevStep = () => {
+        setStep(step - 1);
+    };
+    const isNextActive = progress > step;
+    const isBackActive = step > 1;
     return (
         <div className="flex flex-col mb-8">
             <h2 className="text-xs mb-2 text-gray-color">

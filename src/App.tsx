@@ -5,7 +5,7 @@ import AppRoutes from "@/router/routes";
 const App = () => {
     return (
         <Router>
-            <nav className="flex justify-around p-4 bg-gray-200">
+            {/* <nav className="flex justify-around p-4 bg-gray-200">
                 <Link to="/signup" className="text-blue-500">
                     Register
                 </Link>
@@ -15,7 +15,7 @@ const App = () => {
                 <Link to="/welcome" className="text-blue-500">
                     Welcome
                 </Link>
-            </nav>
+            </nav> */}
             <AppRoutes /> {/* Use the Routes component here */}
         </Router>
     );
