@@ -39,11 +39,52 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
         setProgress(progress - 1);
     };
 
-    // Условие активности кнопок
+    const sliderContent = [
+        {
+            id: 1,
+            content: (
+                <div className="flex gap-4 text-form-info-color items-center">
+                    <span className="font-bold text-3xl">5X</span>
+                    <p className="text-center text-sm text-form-info-color">
+                        Acquiring a new customer is 5x more costly than making
+                        an unhappy customer happy.
+                    </p>
+                </div>
+            ),
+        },
+        {
+            id: 2,
+            content: (
+                <div className="flex gap-4 text-form-info-color items-center">
+                    <span className="font-bold text-3xl">5X</span>
+                    <p className="text-center text-sm text-form-info-color">
+                        Acquiring a new customer is 5x more costly than making
+                        an unhappy customer happy.
+                    </p>
+                </div>
+            ),
+        },
+        {
+            id: 3,
+            content: (
+                <div className="flex gap-4 text-form-info-color items-center">
+                    <span className="font-bold text-3xl">5X</span>
+                    <p className="text-center text-sm text-form-info-color">
+                        Acquiring a new customer is 5x more costly than making
+                        an unhappy customer happy.
+                    </p>
+                </div>
+            ),
+        },
+    ];
+
+    const sliderSettings = {
+        arrows: false,
+    };
+
     const isNextActive = progress > step;
     const isBackActive = step > 0;
 
-    // Тексты для шагов
     const stepsText = [
         { title: "Welcome" },
         { title: "Connect your Shopify store" },
@@ -52,7 +93,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
     ];
 
     return (
-        <div className="relative bg-form-bg text-white flex flex-col justify-between p-10 basis-[40%] max-w-[568px] min-w-[450px]">
+        <div className="relative bg-progress-bg-gradient text-white flex flex-col justify-between p-10 basis-[40%] max-w-[568px] min-w-[450px]">
             <ul className="space-y-12">
                 {stepsText.map((stepData, index) => (
                     <li
@@ -137,7 +178,11 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
             <AppButton onClick={nextStep}>Next</AppButton>
             <AppButton onClick={setSuccess}>Success</AppButton>
             <AppButton onClick={minusSuccess}>minus Success</AppButton>
-            {/* Кнопки навигации */}
+
+            <AppSlider
+                sliderContent={sliderContent}
+                sliderSettings={sliderSettings}
+            ></AppSlider>
 
             <CSSTransition
                 in={progress > 0}

@@ -14,7 +14,7 @@ interface AppInputProps {
     type?: string;
     isError?: boolean;
     width?: string;
-    icon?: React.ReactNode; // Иконка для инпута
+    icon?: React.ReactNode;
 }
 
 const AppInput: React.FC<AppInputProps> = ({

@@ -1,28 +1,57 @@
 import React from "react";
 import Slider, { Settings } from "react-slick";
 
-interface AppSliderProps {
-    carouselContent: React.ReactNode[];
+interface Slide {
+    id: number;
+    content: React.ReactNode;
+    bgColor?: string;
+    paddingX?: string;
+    paddingY?: string;
+    borderRadius?: string;
 }
 
-const AppSlider: React.FC<AppSliderProps> = ({ carouselContent }) => {
-    const settings: Settings = {
-        dots: false,
+interface AppSliderProps {
+    sliderContent: Slide[];
+    sliderSettings?: Settings;
+}
+
+const AppSlider: React.FC<AppSliderProps> = ({
+    sliderContent,
+    sliderSettings,
+}) => {
+    const defaultSettings: Settings = {
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 5000,
+        arrows: false,
     };
 
+    // Объединение настроек слайдера
+    const mergedSettings = { ...defaultSettings, ...sliderSettings };
+
     return (
-        <Slider {...settings}>
-            {carouselContent.map((content, index) => (
-                <div key={index} className="p-5">
-                    {content}
-                </div>
-            ))}
+        <Slider {...mergedSettings}>
+            {sliderContent.map((slide) => {
+                const {
+                    bgColor = "bg-progress-handle-bg",
+                    paddingX = "px-4",
+                    paddingY = "py-4",
+                    borderRadius = "rounded-lg",
+                } = slide;
+
+                return (
+                    <div
+                        key={slide.id}
+                        className={`${bgColor} ${paddingX} ${paddingY} ${borderRadius}`}
+                    >
+                        {slide.content}
+                    </div>
+                );
+            })}
         </Slider>
     );
 };

@@ -23,7 +23,7 @@ const SignUp = () => {
                         <AppFormGroup label="Your name">
                             <AppInput placeholder="Mega Chad"></AppInput>
                         </AppFormGroup>
-                        <AppFormGroup label="Your name">
+                        <AppFormGroup label="Password">
                             <AppInput
                                 type="password"
                                 placeholder="Enter password"

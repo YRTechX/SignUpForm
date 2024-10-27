@@ -17,6 +17,13 @@
     --eye-icon-color: #50627d;
     --progress-handle-bg: #134267;
     --progress-handle-active-color: #93a8c1;
+    --slider-dots-color: #134267;
+    --slider-dots-active-color: #96caf7;
+    --progress-bg-gradient: linear-gradient(
+        339.02deg,
+        #0d3251 0%,
+        #19476c 103.05%
+    );
 }
 
 body {
@@ -47,4 +54,13 @@ body {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.slick-dots li button:before {
+    color: var(--slider-dots-color) !important;
+    opacity: 1 !important;
+}
+
+.slick-dots li.slick-active button:before {
+    color: var(--slider-dots-active-color) !important;
+    opacity: 1 !important;
 }
