@@ -38,11 +38,11 @@ const AppButton: React.FC<AppButtonProps> = ({
             }`}
         >
             {icon && iconPosition === "left" && (
-                <div className="mr-2">{icon}</div>
+                <div className="mr-1">{icon}</div>
             )}
             {children}
             {icon && iconPosition === "right" && (
-                <div className="ml-2">{icon}</div>
+                <div className="ml-1">{icon}</div>
             )}
         </button>
     );

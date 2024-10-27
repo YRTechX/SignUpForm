@@ -37,7 +37,7 @@ const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
                 Step {step} of {stepsCount}
             </h2>
 
-            <div className="relative h-2 mb-4">
+            <div className={`relative h-2 ${progress > 0 && "mb-2"}`}>
                 <div className="h-[6px] border border-mobile-progress-gray absolute rounded w-full">
                     <div
                         className="h-full bg-mobile-progress-gray transition-all duration-300 ease-in-out"
@@ -49,7 +49,7 @@ const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
             </div>
 
             {progress > 0 && (
-                <div className="flex justify-between mt-4">
+                <div className="flex justify-between">
                     <AppButton
                         onClick={prevStep}
                         disabled={!isBackActive}
@@ -61,6 +61,8 @@ const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
                         }
                         fontSize="text-xs"
                         width="w-max"
+                        paddingX="px-2"
+                        paddingY="py-1"
                     >
                         <ChevronLeftIcon className="w-3 h-3" />
                         Prev
