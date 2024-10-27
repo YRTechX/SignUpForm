@@ -34,7 +34,6 @@ const AppInput: React.FC<AppInputProps> = ({
 }) => {
     const [showPassword, setShowPassword] = useState(false);
 
-    // Функция для переключения видимости пароля
     const togglePasswordVisibility = () => {
         setShowPassword((prev) => !prev);
     };
@@ -50,7 +49,7 @@ const AppInput: React.FC<AppInputProps> = ({
                 disabled={disabled}
                 className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} ${width} focus:outline-none transition placeholder-gray ${
                     isError ? "border border-red-600" : "border border-input-bg"
-                } ${icon || type == "password" ? "pr-8" : ""}`}
+                } ${icon || type === "password" ? "pr-8" : ""}`}
             />
             {type === "password" && (
                 <button

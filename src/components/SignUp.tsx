@@ -31,13 +31,11 @@ const SignUp: React.FC<SignUpProps> = ({ step, progress, stepsCount }) => {
     return (
         <div className="desktop:flex h-screen">
             {!isMobile && (
-                <div className="fixed top-0 left-0 w-full">
-                    <SignUpProgress
-                        step={step}
-                        progress={progress}
-                        stepsCount={stepsCount}
-                    />
-                </div>
+                <SignUpProgress
+                    step={step}
+                    progress={progress}
+                    stepsCount={stepsCount}
+                />
             )}
 
             <div className="flex flex-1 justify-center items-center bg-sign-up h-full">
