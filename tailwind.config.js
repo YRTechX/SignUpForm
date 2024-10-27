@@ -19,12 +19,15 @@ module.exports = {
                 "progress-handle-bg": "var(--progress-handle-bg)",
                 "progress-handle-active-color":
                     "var(--progress-handle-active-color)",
+                "slider-dots-color": "var(--slider-dots-color)",
+                "slider-dots-active-color": "var(--slider-dots-active-color)",
             },
             boxShadow: {
                 "card-shadow": "var(--card-shadow)",
             },
             backgroundImage: {
                 "sign-up": "url('@/assets/images/signUpBg.png')",
+                "progress-bg-gradient": "var(--progress-bg-gradient)",
             },
         },
     },
