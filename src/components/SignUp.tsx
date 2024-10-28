@@ -87,8 +87,6 @@ const SignUp = () => {
         (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
         (props) => <ReadyToGo {...props} updateFields={updateFields} />,
     ]);
-    console.log("isNextActive", isNextActive);
-    console.log("progress", progress);
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 1440);

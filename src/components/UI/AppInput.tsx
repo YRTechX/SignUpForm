@@ -16,6 +16,7 @@ interface AppInputProps {
     width?: string;
     icon?: React.ReactNode;
     value?: string;
+    name?: string;
 }
 
 const AppInput: React.FC<AppInputProps> = ({
@@ -33,6 +34,7 @@ const AppInput: React.FC<AppInputProps> = ({
     isError = false,
     icon,
     value = "",
+    name = "",
 }) => {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -47,6 +49,7 @@ const AppInput: React.FC<AppInputProps> = ({
                 type={
                     type === "password" && !showPassword ? "password" : "text"
                 }
+                name={name}
                 value={value}
                 placeholder={placeholder}
                 disabled={disabled}
