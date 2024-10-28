@@ -7,6 +7,7 @@ import ConnectShopify from "@/components/ConnectShopify";
 import ConnectCSEmail from "@/components/ConnectCSEmail";
 import { FormData } from "@/utills/interfaces";
 import AppLoading from "@/components/UI/AppLoading";
+import ReadyToGo from "@/components/ReadyToGo";
 const INITIAL_DATA: FormData = {
     email: "",
     name: "",
@@ -82,7 +83,7 @@ const SignUp = () => {
         (props) => <SignUpForm {...props} updateFields={updateFields} />,
         (props) => <ConnectShopify {...props} updateFields={updateFields} />,
         (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
-        (props) => <div>Step 4 Content</div>,
+        (props) => <ReadyToGo {...props} updateFields={updateFields} />,
     ]);
 
     useEffect(() => {
