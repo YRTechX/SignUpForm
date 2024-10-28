@@ -3,7 +3,7 @@ import logoImage from "@/assets/images/chadLogo.png";
 import AppFormGroup from "@/components/UI/AppFormGroup";
 import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
-import { saveDataToLocalStorage, loginUser } from "@/utills/functions";
+import { saveDataToLocalStorage, loginUser } from "@/utils/functions";
 
 const SignIn = () => {
     const [data, setData] = useState({ email: "", password: "" });

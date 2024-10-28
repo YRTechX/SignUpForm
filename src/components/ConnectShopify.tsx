@@ -5,8 +5,8 @@ import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
-import { ConnectShopifyProps } from "@/utills/types";
-import { fakeConnectShopifyAPI } from "@/utills/fakeApi";
+import { ConnectShopifyProps } from "@/utils/types";
+import { fakeConnectShopifyAPI } from "@/utils/fakeApi";
 import ResponseReceived from "@/components/ResponseReceived";
 const ConnectShopify = ({
     currentStepIndex,

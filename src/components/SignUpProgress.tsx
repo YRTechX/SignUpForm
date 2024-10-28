@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AppButton from "@/components/UI/AppButton";
 import AppSlider from "@/components/UI/AppSlider";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
-import { SignUpProgressProps } from "@/utills/interfaces";
+import { SignUpProgressProps } from "@/utils/interfaces";
 import {
     ChevronLeftIcon,
     ChevronRightIcon,

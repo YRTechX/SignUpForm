@@ -5,7 +5,7 @@ import SignUpCard from "@/components/SignUpCard";
 import SignUpForm from "@/components/SignUpForm";
 import ConnectShopify from "@/components/ConnectShopify";
 import ConnectCSEmail from "@/components/ConnectCSEmail";
-import { FormData } from "@/utills/interfaces";
+import { FormData } from "@/utils/interfaces";
 import AppLoading from "@/components/UI/AppLoading";
 import ReadyToGo from "@/components/ReadyToGo";
 const INITIAL_DATA: FormData = {

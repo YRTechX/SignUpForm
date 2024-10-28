@@ -7,7 +7,7 @@ import {
     CheckIcon,
 } from "@heroicons/react/solid";
 
-import { MobileSignUpProgressProps } from "@/utills/interfaces";
+import { MobileSignUpProgressProps } from "@/utils/interfaces";
 
 const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
     currentStepIndex,

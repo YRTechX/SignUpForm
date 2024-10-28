@@ -1,6 +1,6 @@
 import { CheckIcon } from "@heroicons/react/solid";
 import AppButton from "@/components/UI/AppButton";
-import { ResponseReceivedProps } from "@/utills/interfaces";
+import { ResponseReceivedProps } from "@/utils/interfaces";
 
 const ResponseReceived: React.FC<ResponseReceivedProps> = ({
     setResponse,

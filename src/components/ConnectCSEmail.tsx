@@ -6,8 +6,8 @@ import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
-import { fakeConnectGoogleAPI } from "@/utills/fakeApi";
-import { ConnectCSEmailData } from "@/utills/types";
+import { fakeConnectGoogleAPI } from "@/utils/fakeApi";
+import { ConnectCSEmailData } from "@/utils/types";
 import ResponseReceived from "@/components/ResponseReceived";
 
 const ConnectCSEmail = ({

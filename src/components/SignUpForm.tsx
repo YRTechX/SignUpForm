@@ -3,7 +3,7 @@ import AppFormGroup from "@/components/UI/AppFormGroup";
 import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
-import { SignUpFormProps } from "@/utills/types";
+import { SignUpFormProps } from "@/utils/types";
 import { useState } from "react";
 
 const SignUpForm = ({
