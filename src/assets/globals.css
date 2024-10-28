@@ -26,6 +26,8 @@
     );
     --mobile-progress-gray: #c9d3e0;
     --progress-btn-disabled-color: #c3cad5;
+    --green-color: #65bd47;
+    --mobile-card-bg: #f8f9fc;
 }
 
 body {

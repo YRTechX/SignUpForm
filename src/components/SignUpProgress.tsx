@@ -10,40 +10,24 @@ import {
 import { CSSTransition } from "react-transition-group";
 
 interface SignUpProgressProps {
-    step: number;
-    progress: number;
-    stepsCount: number;
+    currentStepIndex: number;
+    isStepCompleted: (index: number) => boolean;
+    isNextActive: boolean;
+    isFirstStep: boolean;
+    next: () => void;
+    back: () => void;
 }
 
-const SignUpProgress: React.FC<SignUpProgressProps> = (
-    {
-        /*  step,
-    progress,
-    stepsCount, */
-    }
-) => {
-    const [step, setStep] = useState<number>(1);
-    const [progress, setProgress] = useState<number>(3);
-    const stepsCount = 4;
+const SignUpProgress: React.FC<SignUpProgressProps> = ({
+    currentStepIndex,
+    isStepCompleted,
+    isNextActive,
+    isFirstStep,
+    next,
+    back,
+}) => {
+    const isStepSelected = (index: number) => index === currentStepIndex;
 
-    const isStepSelected = (index: number) => index === step - 1;
-    const isStepCompleted = (index: number) => index < progress;
-    const nextStep = () => {
-        setStep(step + 1);
-    };
-
-    const prevStep = () => {
-        setStep(step - 1);
-    };
-
-    const setSuccess = () => {
-        setProgress(progress + 1);
-    };
-
-    const minusSuccess = () => {
-        setProgress(progress - 1);
-    };
-    const isMobileOrTablet = window.innerWidth < 1440;
     const sliderContent = [
         {
             id: 1,
@@ -86,9 +70,6 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
     const sliderSettings = {
         arrows: false,
     };
-
-    const isNextActive = progress > step;
-    const isBackActive = step > 1;
 
     const stepsText = [
         { title: "Welcome" },
@@ -176,7 +157,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
                     ))}
                 </ul>
                 <CSSTransition
-                    in={progress > 0}
+                    in={isNextActive}
                     timeout={500}
                     classNames="fade"
                     unmountOnExit
@@ -184,18 +165,18 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
                     <div className="flex justify-between mt-5">
                         <AppButton
                             bgColor={
-                                isBackActive
+                                !isFirstStep
                                     ? "bg-progress-handle-bg"
                                     : "transparent"
                             }
                             color={
-                                isBackActive
+                                !isFirstStep
                                     ? "text-progress-handle-active-color"
                                     : "text-gray-color"
                             }
-                            onClick={prevStep}
+                            onClick={back}
                             width="w-max"
-                            disabled={!isBackActive}
+                            disabled={isFirstStep}
                             icon={<ChevronLeftIcon className="w-5 h-5" />}
                             iconPosition="left"
                             borderRadius="rounded"
@@ -216,7 +197,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = (
                                     ? "text-progress-handle-active-color"
                                     : "text-gray-color"
                             }
-                            onClick={nextStep}
+                            onClick={next}
                             width="w-max"
                             disabled={!isNextActive}
                             icon={<ChevronRightIcon className="w-5 h-5" />}

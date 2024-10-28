@@ -1,61 +1,61 @@
 import React, { useEffect, useState } from "react";
 import AppButton from "@/components/UI/AppButton";
+import { CSSTransition } from "react-transition-group";
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
     CheckIcon,
 } from "@heroicons/react/solid";
 
-interface SignUpProgressProps {
-    step: number;
-    progress: number;
-    stepsCount: number;
+interface MobileSignUpProgressProps {
+    currentStepIndex: number;
+    isNextActive: boolean;
+    isFirstStep: boolean;
+    stepsLength: number;
+    next: () => void;
+    back: () => void;
 }
 
-const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
-    {
-        /*  step,
-    progress,
-    stepsCount, */
-    }
-) => {
-    const [step, setStep] = useState<number>(1);
-    const [progress, setProgress] = useState<number>(3);
-    const stepsCount = 4;
-    const nextStep = () => {
-        setStep(step + 1);
-    };
-
-    const prevStep = () => {
-        setStep(step - 1);
-    };
-    const isNextActive = progress > step;
-    const isBackActive = step > 1;
+const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
+    currentStepIndex,
+    isNextActive,
+    stepsLength,
+    isFirstStep,
+    next,
+    back,
+}) => {
     return (
         <div className="flex flex-col mb-8">
             <h2 className="text-xs mb-2 text-gray-color">
-                Step {step} of {stepsCount}
+                Step {currentStepIndex + 1} of {stepsLength}
             </h2>
 
-            <div className={`relative h-2 ${progress > 0 && "mb-2"}`}>
+            <div className={`relative h-2 ${isNextActive && "mb-2"}`}>
                 <div className="h-[6px] border border-mobile-progress-gray absolute rounded w-full">
                     <div
                         className="h-full bg-mobile-progress-gray transition-all duration-300 ease-in-out"
                         style={{
-                            width: `${(step / stepsCount) * 100}%`,
+                            width: `${
+                                (currentStepIndex + 1 / stepsLength) * 100
+                            }%`,
                         }}
                     />
                 </div>
             </div>
 
-            {progress > 0 && (
+            <CSSTransition
+                in={isNextActive}
+                timeout={500}
+                classNames="fade"
+                unmountOnExit
+            >
                 <div className="flex justify-between">
                     <AppButton
-                        onClick={prevStep}
-                        disabled={!isBackActive}
+                        onClick={back}
+                        disabled={isFirstStep}
                         bgColor="bg-transparent"
                         color={
-                            isBackActive
+                            !isFirstStep
                                 ? "text-gray-color"
                                 : "text-progress-btn-disabled-color"
                         }
@@ -68,7 +68,7 @@ const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
                         Prev
                     </AppButton>
                     <AppButton
-                        onClick={nextStep}
+                        onClick={next}
                         disabled={!isNextActive}
                         bgColor="bg-transparent"
                         color={
@@ -83,7 +83,7 @@ const MobileSignUpProgress: React.FC<SignUpProgressProps> = (
                         <ChevronRightIcon className="w-3 h-3" />
                     </AppButton>
                 </div>
-            )}
+            </CSSTransition>
         </div>
     );
 };
