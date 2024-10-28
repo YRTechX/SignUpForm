@@ -25,6 +25,7 @@ const ConnectCSEmail = ({
     SetLoading,
     SetResponse,
     isResponse,
+    handleStepChange,
 }: ConnectCSEmailData) => {
     const platformOptions = [
         { value: "platform_1", label: "Platform email 1" },
@@ -52,7 +53,11 @@ const ConnectCSEmail = ({
     return (
         <>
             {isResponse ? (
-                <ResponseReceived done={() => SetResponse(false)} />
+                <ResponseReceived
+                    handleStepChange={handleStepChange}
+                    currentStepIndex={currentStepIndex}
+                    setResponse={SetResponse}
+                />
             ) : (
                 <>
                     <div className="flex mb-6">

@@ -23,7 +23,8 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
         setLoading(loadingState);
     }
     function SetResponse(responseState: boolean) {
-        setLoading(responseState);
+        setResponse(responseState);
+        console.log("isResponse", isResponse);
     }
     function next() {
         setCurrentStepIndex((i) => {
@@ -49,6 +50,12 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
             [index]: isValid,
         }));
     }
+    const handleStepChange = (index: number, isValid: boolean) => {
+        if (isValid) {
+            next();
+            validateStep(index, isValid);
+        }
+    };
 
     return {
         currentStepIndex,
@@ -69,5 +76,6 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
         isLoading,
         SetResponse,
         isResponse,
+        handleStepChange,
     };
 }

@@ -20,6 +20,7 @@ const SignUpForm = ({
     isLoading,
     SetLoading,
     validateStep,
+    handleStepChange,
 }: SignUpFormProps) => {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -44,8 +45,7 @@ const SignUpForm = ({
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validateFields()) {
-            validateStep(currentStepIndex, true);
-            next();
+            handleStepChange(currentStepIndex, true);
         }
     };
 

@@ -21,5 +21,7 @@ export interface FormData {
     customer_support_email: CustomerSupportEmail;
 }
 export interface ResponseReceivedProps {
-    done: () => void;
+    setResponse: (status: boolean) => void;
+    handleStepChange: (currentStepIndex: number, status: boolean) => void;
+    currentStepIndex: number;
 }

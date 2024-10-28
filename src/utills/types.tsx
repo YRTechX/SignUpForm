@@ -17,6 +17,8 @@ export type ConnectCSEmailData = {
     isLoading: boolean;
     SetResponse: (responseState: boolean) => void;
     isResponse: boolean;
+    validateStep: (index: number, isValid: boolean) => void;
+    handleStepChange: (index: number, isValid: boolean) => void;
 };
 type UserData = {
     email: string;
@@ -40,6 +42,7 @@ export type SignUpFormProps = {
     isResponse: boolean;
     data: UserData;
     validateStep: (index: number, isValid: boolean) => void;
+    handleStepChange: (index: number, isValid: boolean) => void;
 };
 type CustomerSupportEmailData = {
     shopify_store_id: string;
@@ -70,4 +73,6 @@ export type ConnectShopifyProps = {
     isLoading: boolean;
     SetResponse: (responseState: boolean) => void;
     isResponse: boolean;
+    validateStep: (index: number, isValid: boolean) => void;
+    handleStepChange: (index: number, isValid: boolean) => void;
 };

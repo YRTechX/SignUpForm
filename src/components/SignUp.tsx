@@ -79,6 +79,7 @@ const SignUp = () => {
         isResponse,
         SetResponse,
         validateStep,
+        handleStepChange,
     } = useMultistepForm([
         (props) => <SignUpForm {...props} updateFields={updateFields} />,
         (props) => <ConnectShopify {...props} updateFields={updateFields} />,
@@ -129,6 +130,7 @@ const SignUp = () => {
                             SetLoading,
                             SetResponse,
                             validateStep,
+                            handleStepChange,
                         })}
                     </SignUpCard>
                 </div>
