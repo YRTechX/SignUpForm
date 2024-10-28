@@ -38,6 +38,8 @@ export type SignUpFormProps = {
     isLoading: boolean;
     SetResponse: (responseState: boolean) => void;
     isResponse: boolean;
+    data: UserData;
+    validateStep: (index: number, isValid: boolean) => void;
 };
 type CustomerSupportEmailData = {
     shopify_store_id: string;

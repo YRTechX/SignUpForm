@@ -6,6 +6,7 @@ import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
 import { ConnectShopifyProps } from "@/utills/types";
+import { fakeConnectShopifyAPI } from "@/utills/fakeApi";
 const ConnectShopify = ({
     currentStepIndex,
     isStepCompleted,
@@ -28,6 +29,27 @@ const ConnectShopify = ({
         { value: "platform_2", label: "Platform 2" },
         { value: "platform_3", label: "Platform 3" },
     ];
+    const connectToShopify = async () => {
+        SetLoading(true);
+        try {
+            const response = await fakeConnectShopifyAPI(20);
+            const { shopify_store_id, shopify_store_name } = response;
+
+            updateFields(
+                {
+                    shopify_store_id,
+                    shopify_store_name,
+                },
+                "shopify"
+            );
+            SetResponse(true);
+        } catch (err) {
+            /* setError(err.message); */
+            // Обработка ошибки
+        } finally {
+            SetLoading(false);
+        }
+    };
     return (
         <>
             <div className="flex mb-6">

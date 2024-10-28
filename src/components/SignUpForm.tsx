@@ -4,6 +4,7 @@ import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { SignUpFormProps } from "@/utills/types";
+import { useState } from "react";
 
 const SignUpForm = ({
     currentStepIndex,
@@ -14,10 +15,40 @@ const SignUpForm = ({
     next,
     back,
     isMobile,
+    data,
     updateFields,
     isLoading,
     SetLoading,
+    validateStep,
 }: SignUpFormProps) => {
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+    const validateFields = () => {
+        const newErrors: { [key: string]: string } = {};
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(data.email)) {
+            newErrors.email = "Please enter a valid email address.";
+        }
+        if (data.name.length < 3) {
+            newErrors.name = "Name must be at least 3 characters.";
+        }
+        if (data.password.length < 8) {
+            newErrors.password = "Password must be at least 8 characters.";
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (validateFields()) {
+            validateStep(currentStepIndex, true);
+            next();
+        }
+    };
+
     return (
         <>
             <div className="flex mb-6">
@@ -47,32 +78,47 @@ const SignUpForm = ({
             </p>
 
             <div>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                     <AppFormGroup label="Email">
                         <AppInput
                             type="email"
                             placeholder="megachad@trychad.com"
+                            value={data.email}
                             onChange={(e) =>
                                 updateFields({ email: e.target.value })
                             }
+                            isError={!!errors.email}
                         />
+                        {errors.email && (
+                            <p className="text-red-600">{errors.email}</p>
+                        )}
                     </AppFormGroup>
                     <AppFormGroup label="Your name">
                         <AppInput
                             placeholder="Mega Chad"
+                            value={data.name}
                             onChange={(e) =>
                                 updateFields({ name: e.target.value })
                             }
+                            isError={!!errors.name}
                         />
+                        {errors.name && (
+                            <p className="text-red-600">{errors.name}</p>
+                        )}
                     </AppFormGroup>
                     <AppFormGroup label="Password">
                         <AppInput
                             type="password"
                             placeholder="Enter password"
+                            value={data.password}
                             onChange={(e) =>
                                 updateFields({ password: e.target.value })
                             }
+                            isError={!!errors.password}
                         />
+                        {errors.password && (
+                            <p className="text-red-600">{errors.password}</p>
+                        )}
                     </AppFormGroup>
 
                     <AppButton>Create account</AppButton>

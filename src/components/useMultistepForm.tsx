@@ -26,12 +26,10 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
         setLoading(responseState);
     }
     function next() {
-        if (progress[currentStepIndex]) {
-            setCurrentStepIndex((i) => {
-                if (i >= steps.length - 1) return i;
-                return i + 1;
-            });
-        }
+        setCurrentStepIndex((i) => {
+            if (i >= steps.length - 1) return i;
+            return i + 1;
+        });
     }
 
     function back() {
