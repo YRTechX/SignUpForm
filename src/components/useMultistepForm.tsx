@@ -64,8 +64,13 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
         isFirstStep: currentStepIndex === 0,
         isLastStep: currentStepIndex === steps.length - 1,
         isNextActive:
-            currentStepIndex === steps.length - 1 &&
-            progress[currentStepIndex + 1],
+            currentStepIndex < steps.length - 1 &&
+            Object.keys(progress)
+                .slice(currentStepIndex)
+                .some((key) => progress[Number(key)] === true),
+        isProgress: Object.keys(progress).some(
+            (key) => progress[Number(key)] === true
+        ),
         goTo,
         next,
         back,

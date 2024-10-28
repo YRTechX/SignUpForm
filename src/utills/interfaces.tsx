@@ -28,3 +28,21 @@ export interface ResponseReceivedProps {
 export interface ReadyToGoProps {
     isMobile: boolean;
 }
+export interface SignUpProgressProps {
+    currentStepIndex: number;
+    isStepCompleted: (index: number) => boolean;
+    isNextActive: boolean;
+    isFirstStep: boolean;
+    next: () => void;
+    back: () => void;
+    isProgress: boolean;
+}
+export interface MobileSignUpProgressProps {
+    currentStepIndex: number;
+    isNextActive: boolean;
+    isFirstStep: boolean;
+    stepsLength: number;
+    next: () => void;
+    back: () => void;
+    isProgress: boolean;
+}

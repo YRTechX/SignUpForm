@@ -7,14 +7,7 @@ import {
     CheckIcon,
 } from "@heroicons/react/solid";
 
-interface MobileSignUpProgressProps {
-    currentStepIndex: number;
-    isNextActive: boolean;
-    isFirstStep: boolean;
-    stepsLength: number;
-    next: () => void;
-    back: () => void;
-}
+import { MobileSignUpProgressProps } from "@/utills/interfaces";
 
 const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
     currentStepIndex,
@@ -23,6 +16,7 @@ const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
     isFirstStep,
     next,
     back,
+    isProgress,
 }) => {
     return (
         <div className="flex flex-col mb-8">
@@ -44,7 +38,7 @@ const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
             </div>
 
             <CSSTransition
-                in={isNextActive}
+                in={isProgress}
                 timeout={500}
                 classNames="fade"
                 unmountOnExit

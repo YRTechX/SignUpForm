@@ -25,6 +25,7 @@ const ConnectShopify = ({
     isResponse,
     validateStep,
     handleStepChange,
+    isProgress,
 }: ConnectShopifyProps) => {
     console.log(data);
     const platformOptions = [
@@ -79,6 +80,7 @@ const ConnectShopify = ({
                             next={next}
                             back={back}
                             stepsLength={stepsLength}
+                            isProgress={isProgress}
                         />
                     )}
                     {data.shopify.shopify ? (

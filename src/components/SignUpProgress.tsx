@@ -2,21 +2,13 @@ import React, { useEffect, useState } from "react";
 import AppButton from "@/components/UI/AppButton";
 import AppSlider from "@/components/UI/AppSlider";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
+import { SignUpProgressProps } from "@/utills/interfaces";
 import {
     ChevronLeftIcon,
     ChevronRightIcon,
     CheckIcon,
 } from "@heroicons/react/solid";
 import { CSSTransition } from "react-transition-group";
-
-interface SignUpProgressProps {
-    currentStepIndex: number;
-    isStepCompleted: (index: number) => boolean;
-    isNextActive: boolean;
-    isFirstStep: boolean;
-    next: () => void;
-    back: () => void;
-}
 
 const SignUpProgress: React.FC<SignUpProgressProps> = ({
     currentStepIndex,
@@ -25,6 +17,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = ({
     isFirstStep,
     next,
     back,
+    isProgress,
 }) => {
     const isStepSelected = (index: number) => index === currentStepIndex;
 
@@ -157,7 +150,7 @@ const SignUpProgress: React.FC<SignUpProgressProps> = ({
                     ))}
                 </ul>
                 <CSSTransition
-                    in={isNextActive}
+                    in={isProgress}
                     timeout={500}
                     classNames="fade"
                     unmountOnExit

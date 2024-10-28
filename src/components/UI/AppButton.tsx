@@ -44,7 +44,9 @@ const AppButton: React.FC<AppButtonProps> = ({
             {icon && iconPosition === "left" && (
                 <div className={`mr-1 ${iconBgClasses}`}>{icon}</div>
             )}
-            <span className="flex-1">{children}</span>
+            <span className="flex-1 flex items-center justify-center">
+                {children}
+            </span>
             {icon && iconPosition === "right" && (
                 <div className={`ml-1 ${iconBgClasses}`}>{icon}</div>
             )}

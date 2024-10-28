@@ -21,6 +21,7 @@ const SignUpForm = ({
     SetLoading,
     validateStep,
     handleStepChange,
+    isProgress,
 }: SignUpFormProps) => {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -64,6 +65,7 @@ const SignUpForm = ({
                     next={next}
                     back={back}
                     stepsLength={stepsLength}
+                    isProgress={isProgress}
                 />
             )}
 

@@ -79,13 +79,16 @@ const SignUp = () => {
         SetResponse,
         validateStep,
         handleStepChange,
+        isProgress,
+        progress,
     } = useMultistepForm([
         (props) => <SignUpForm {...props} updateFields={updateFields} />,
         (props) => <ConnectShopify {...props} updateFields={updateFields} />,
         (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
         (props) => <ReadyToGo {...props} updateFields={updateFields} />,
     ]);
-
+    console.log("isNextActive", isNextActive);
+    console.log("progress", progress);
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 1440);
@@ -110,6 +113,7 @@ const SignUp = () => {
                         isFirstStep={isFirstStep}
                         next={next}
                         back={back}
+                        isProgress={isProgress}
                     />
                 )}
 
@@ -130,6 +134,7 @@ const SignUp = () => {
                             SetResponse,
                             validateStep,
                             handleStepChange,
+                            isProgress,
                         })}
                     </SignUpCard>
                 </div>

@@ -26,6 +26,7 @@ const ConnectCSEmail = ({
     SetResponse,
     isResponse,
     handleStepChange,
+    isProgress,
 }: ConnectCSEmailData) => {
     const platformOptions = [
         { value: "platform_1", label: "Platform email 1" },
@@ -75,6 +76,7 @@ const ConnectCSEmail = ({
                             next={next}
                             back={back}
                             stepsLength={stepsLength}
+                            isProgress={isProgress}
                         />
                     )}
                     {data.customer_support_email.gmail ? (
