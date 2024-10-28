@@ -36,7 +36,7 @@ const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
                         className="h-full bg-mobile-progress-gray transition-all duration-300 ease-in-out"
                         style={{
                             width: `${
-                                (currentStepIndex + 1 / stepsLength) * 100
+                                ((currentStepIndex + 1) / stepsLength) * 100
                             }%`,
                         }}
                     />

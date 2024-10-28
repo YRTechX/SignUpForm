@@ -30,7 +30,6 @@ const SignUp = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1440);
     const [data, setData] = useState(INITIAL_DATA);
     const updateFields = (fields: Partial<FormData>, path?: string) => {
-        console.log("fields", fields, "path", path);
         setData((prev: FormData) => {
             const newData: FormData = { ...prev };
 
@@ -60,7 +59,6 @@ const SignUp = () => {
                 Object.assign(newData, fields);
             }
 
-            console.log("newData", newData);
             return newData;
         });
     };
