@@ -26,6 +26,7 @@ module.exports = {
                     "var(--progress-btn-disabled-color)",
                 "green-color": "var(--green-color)",
                 "mobile-card-bg": "var(--mobile-card-bg)",
+                "btn-google-bg": "var(--btn-google-bg)",
             },
             boxShadow: {
                 "card-shadow": "var(--card-shadow)",

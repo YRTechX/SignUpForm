@@ -157,7 +157,7 @@ const ConnectShopify = ({
 
                     <div>
                         <div className="space-y-6">
-                            <AppFormGroup label="Email">
+                            <AppFormGroup label="Platform">
                                 <AppSelect
                                     options={platformOptions}
                                     onChange={(option) =>

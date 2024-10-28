@@ -13,6 +13,8 @@ interface AppButtonProps {
     onClick?: () => void;
     icon?: React.ReactNode;
     iconPosition?: "left" | "right";
+    fontWeight?: string;
+    iconBgClasses?: string;
 }
 
 const AppButton: React.FC<AppButtonProps> = ({
@@ -28,21 +30,23 @@ const AppButton: React.FC<AppButtonProps> = ({
     onClick,
     icon,
     iconPosition = "left",
+    fontWeight = "font-normal",
+    iconBgClasses = "",
 }) => {
     return (
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} ${width} focus:outline-none transition flex items-center justify-center ${
+            className={`${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${color} ${fontSize} ${width} ${fontWeight} focus:outline-none transition flex items-center justify-center ${
                 !disabled ? "hover:opacity-80" : ""
             }`}
         >
             {icon && iconPosition === "left" && (
-                <div className="mr-1">{icon}</div>
+                <div className={`mr-1 ${iconBgClasses}`}>{icon}</div>
             )}
-            {children}
+            <span className="flex-1">{children}</span>
             {icon && iconPosition === "right" && (
-                <div className="ml-1">{icon}</div>
+                <div className={`ml-1 ${iconBgClasses}`}>{icon}</div>
             )}
         </button>
     );

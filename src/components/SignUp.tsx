@@ -4,6 +4,7 @@ import SignUpProgress from "@/components/SignUpProgress";
 import SignUpCard from "@/components/SignUpCard";
 import SignUpForm from "@/components/SignUpForm";
 import ConnectShopify from "@/components/ConnectShopify";
+import ConnectCSEmail from "@/components/ConnectCSEmail";
 import { FormData } from "@/utills/interfaces";
 const INITIAL_DATA: FormData = {
     email: "",
@@ -13,11 +14,13 @@ const INITIAL_DATA: FormData = {
         shopify: true,
         shopify_store_id: "",
         shopify_store_name: "",
+        non_shopify_platform_id: "",
         non_shopify_platform_name: "",
     },
     customer_support_email: {
         gmail: true,
         gmail_address: "",
+        non_gmail_platform_id: "",
         non_gmail_platform_name: "",
     },
 };
@@ -34,11 +37,9 @@ const SignUp = () => {
                 const keys = path.split(".");
                 let current: any = newData;
 
-                // Проходим по всем ключам, кроме последнего
                 for (let i = 0; i < keys.length - 1; i++) {
                     const key = keys[i];
 
-                    // Если объекта по пути нет, создаём его
                     if (!current[key]) {
                         current[key] = {};
                     }
@@ -46,10 +47,8 @@ const SignUp = () => {
                     current = current[key];
                 }
 
-                // Последний ключ в пути
                 const lastKey = keys[keys.length - 1];
 
-                // Присваиваем каждое поле в текущий объект по ключу
                 Object.keys(fields).forEach((fieldKey) => {
                     current[lastKey] = {
                         ...(current[lastKey] || {}),
@@ -57,7 +56,6 @@ const SignUp = () => {
                     };
                 });
             } else {
-                // Если путь не указан, обновляем на верхнем уровне
                 Object.assign(newData, fields);
             }
 
@@ -76,9 +74,9 @@ const SignUp = () => {
         next,
         back,
     } = useMultistepForm([
+        (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
         (props) => <ConnectShopify {...props} updateFields={updateFields} />,
         (props) => <SignUpForm {...props} updateFields={updateFields} />,
-        (props) => <div>Step 3 Content</div>,
         (props) => <div>Step 4 Content</div>,
     ]);
 
