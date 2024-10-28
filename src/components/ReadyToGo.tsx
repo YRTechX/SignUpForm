@@ -2,7 +2,7 @@ import { CheckIcon } from "@heroicons/react/solid";
 import AppButton from "@/components/UI/AppButton";
 import { ReadyToGoProps } from "@/utils/interfaces";
 
-const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile }) => {
+const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile, saveData }) => {
     return (
         <>
             {isMobile ? (
@@ -17,7 +17,7 @@ const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile }) => {
                         Chad doesn’t support mobile browsers. To access your
                         dashboard, login from your laptop or desktop computer.
                     </p>
-                    <AppButton>Ok</AppButton>
+                    <AppButton onClick={saveData}>Ok</AppButton>
                 </>
             ) : (
                 <>
@@ -28,7 +28,7 @@ const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile }) => {
                         A fully loaded self-service portal is now ready to
                         deploy on your Shopify store.
                     </p>
-                    <p className="text-gray-colormb-8">
+                    <p className="text-gray-color mb-8">
                         We’ve programmed it to follow industry best practices
                         for shipping, return & exchange, and payment policy.
                     </p>
@@ -42,7 +42,7 @@ const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile }) => {
                             nothing is live until you hit “Go Live”!
                         </span>
                     </p>
-                    <AppButton>Start customizing</AppButton>
+                    <AppButton onClick={saveData}>Start customizing</AppButton>
                 </>
             )}
         </>

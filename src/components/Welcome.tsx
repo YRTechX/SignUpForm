@@ -5,7 +5,7 @@ import { getUserFromLocalStorage } from "@/utils/functions";
 
 const Welcome = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1440);
-    const [userData, setUserData] = useState({ email: "" });
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         const user = getUserFromLocalStorage();
@@ -40,7 +40,7 @@ const Welcome = () => {
                     <AppButton>Ok</AppButton>
                     <div className="mt-2">
                         <p className="text-center text-xs text-gray-color">
-                            Not {userData?.email}?{" "}
+                            Not {userData ? userData.email : ""}?{" "}
                             <a
                                 href="#"
                                 className="text-link-color hover:opacity-80"
@@ -53,27 +53,8 @@ const Welcome = () => {
             ) : (
                 <>
                     <p className="text-heading-color font-bold text-2xl mb-8">
-                        You’re ready to go! 🚀
+                        Hello Luna Edge, My name is {`${userData?.name}`}. 🚀
                     </p>
-                    <p className="text-gray-color mb-8">
-                        A fully loaded self-service portal is now ready to
-                        deploy on your Shopify store.
-                    </p>
-                    <p className="text-gray-colormb-8">
-                        We’ve programmed it to follow industry best practices
-                        for shipping, return & exchange, and payment policy.
-                    </p>
-                    <p className="text-gray-color mb-8">
-                        You can customize these settings to fit your store
-                        policy anytime.
-                    </p>
-                    <p className="text-gray-color font-semibold mb-4">
-                        Lastly,{" "}
-                        <span className="font-">
-                            nothing is live until you hit “Go Live”!
-                        </span>
-                    </p>
-                    <AppButton>Start customizing</AppButton>
                 </>
             )}
         </>

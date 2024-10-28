@@ -27,6 +27,7 @@ export interface ResponseReceivedProps {
 }
 export interface ReadyToGoProps {
     isMobile: boolean;
+    saveData: () => void;
 }
 export interface SignUpProgressProps {
     currentStepIndex: number;

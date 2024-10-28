@@ -8,6 +8,7 @@ import ConnectCSEmail from "@/components/ConnectCSEmail";
 import { FormData } from "@/utils/interfaces";
 import AppLoading from "@/components/UI/AppLoading";
 import ReadyToGo from "@/components/ReadyToGo";
+import { saveDataToLocalStorage } from "@/utils/functions";
 const INITIAL_DATA: FormData = {
     email: "",
     name: "",
@@ -85,7 +86,13 @@ const SignUp = () => {
         (props) => <SignUpForm {...props} updateFields={updateFields} />,
         (props) => <ConnectShopify {...props} updateFields={updateFields} />,
         (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
-        (props) => <ReadyToGo {...props} updateFields={updateFields} />,
+        (props) => (
+            <ReadyToGo
+                {...props}
+                updateFields={updateFields}
+                saveData={() => saveDataToLocalStorage(data)}
+            />
+        ),
     ]);
     useEffect(() => {
         const handleResize = () => {
