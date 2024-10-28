@@ -9,6 +9,7 @@ import AppSelect from "@/components/UI/AppSelect";
 import { fakeConnectGoogleAPI } from "@/utils/fakeApi";
 import { ConnectCSEmailData } from "@/utils/types";
 import ResponseReceived from "@/components/ResponseReceived";
+import { useState } from "react"; // Не забудьте импортировать useState
 
 const ConnectCSEmail = ({
     currentStepIndex,
@@ -28,14 +29,15 @@ const ConnectCSEmail = ({
     handleStepChange,
     isProgress,
 }: ConnectCSEmailData) => {
+    const [errors, setErrors] = useState<{ platform?: string }>({});
     const platformOptions = [
         { value: "platform_1", label: "Platform email 1" },
         { value: "platform_2", label: "Platform email 2" },
         { value: "platform_3", label: "Platform email 3" },
     ];
+
     const connectToGoogle = async () => {
         SetLoading(true);
-        /* setError(null); */
         try {
             const response = await fakeConnectGoogleAPI(20);
             updateFields(
@@ -46,11 +48,26 @@ const ConnectCSEmail = ({
             );
             SetResponse(true);
         } catch (err) {
-            /* setError(err.message); */
+            // Обработка ошибки, если нужно
         } finally {
             SetLoading(false);
         }
     };
+
+    const handleSubmitWithoutGmail = () => {
+        setErrors({});
+        if (!data.customer_support_email.non_gmail_platform_id) {
+            setErrors({ platform: "Please select a platform." });
+            return;
+        }
+
+        SetLoading(true);
+        SetResponse(true);
+        setTimeout(() => {
+            SetLoading(false);
+        }, 2000);
+    };
+
     return (
         <>
             {isResponse ? (
@@ -196,7 +213,7 @@ const ConnectCSEmail = ({
                                     <AppFormGroup label="Platform">
                                         <AppSelect
                                             options={platformOptions}
-                                            onChange={(option) =>
+                                            onChange={(option) => {
                                                 updateFields(
                                                     {
                                                         non_gmail_platform_id:
@@ -205,13 +222,24 @@ const ConnectCSEmail = ({
                                                             option.label,
                                                     },
                                                     "customer_support_email"
-                                                )
-                                            }
+                                                );
+                                                setErrors({});
+                                            }}
                                             borderRadius="rounded"
                                             placeholder="Select platform"
-                                        ></AppSelect>
+                                            isError={!!errors.platform}
+                                        />
+                                        {errors.platform && (
+                                            <p className="text-red-500 text-sm">
+                                                {errors.platform}
+                                            </p>
+                                        )}
                                     </AppFormGroup>
-                                    <AppButton>Submit</AppButton>
+                                    <AppButton
+                                        onClick={handleSubmitWithoutGmail}
+                                    >
+                                        Submit
+                                    </AppButton>
                                 </div>
                             </div>
 

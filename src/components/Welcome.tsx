@@ -2,11 +2,16 @@ import { CheckIcon } from "@heroicons/react/solid";
 import AppButton from "@/components/UI/AppButton";
 import { useState, useEffect } from "react";
 import { getUserFromLocalStorage } from "@/utils/functions";
+import { FormData } from "@/utils/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1440);
-    const [userData, setUserData] = useState(null);
-
+    const [userData, setUserData] = useState<FormData | null>(null);
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        navigate("/login");
+    };
     useEffect(() => {
         const user = getUserFromLocalStorage();
         if (user) {
@@ -44,6 +49,7 @@ const Welcome = () => {
                             <a
                                 href="#"
                                 className="text-link-color hover:opacity-80"
+                                onClick={handleLogout}
                             >
                                 Logout
                             </a>

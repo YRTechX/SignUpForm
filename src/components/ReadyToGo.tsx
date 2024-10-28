@@ -1,8 +1,15 @@
 import { CheckIcon } from "@heroicons/react/solid";
 import AppButton from "@/components/UI/AppButton";
 import { ReadyToGoProps } from "@/utils/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile, saveData }) => {
+    const navigate = useNavigate();
+
+    const handleSave = () => {
+        saveData();
+        navigate("/login");
+    };
     return (
         <>
             {isMobile ? (
@@ -17,7 +24,7 @@ const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile, saveData }) => {
                         Chad doesn’t support mobile browsers. To access your
                         dashboard, login from your laptop or desktop computer.
                     </p>
-                    <AppButton onClick={saveData}>Ok</AppButton>
+                    <AppButton onClick={handleSave}>Ok</AppButton>
                 </>
             ) : (
                 <>
@@ -42,7 +49,9 @@ const ReadyToGo: React.FC<ReadyToGoProps> = ({ isMobile, saveData }) => {
                             nothing is live until you hit “Go Live”!
                         </span>
                     </p>
-                    <AppButton onClick={saveData}>Start customizing</AppButton>
+                    <AppButton onClick={handleSave}>
+                        Start customizing
+                    </AppButton>
                 </>
             )}
         </>

@@ -47,3 +47,6 @@ export interface MobileSignUpProgressProps {
     back: () => void;
     isProgress: boolean;
 }
+export interface SignInProps {
+    setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+}

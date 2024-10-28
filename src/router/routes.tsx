@@ -7,8 +7,8 @@ import WelcomePage from "@/views/WelcomePage";
 const AppRoutes = () => {
     return (
         <Routes>
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/registration" element={<SignUpPage />} />
+            <Route path="/login" element={<SignInPage />} />
             <Route path="/welcome" element={<WelcomePage />} />
             <Route
                 path="/"

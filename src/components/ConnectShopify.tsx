@@ -8,6 +8,8 @@ import AppSelect from "@/components/UI/AppSelect";
 import { ConnectShopifyProps } from "@/utils/types";
 import { fakeConnectShopifyAPI } from "@/utils/fakeApi";
 import ResponseReceived from "@/components/ResponseReceived";
+import { useState } from "react";
+
 const ConnectShopify = ({
     currentStepIndex,
     isStepCompleted,
@@ -27,15 +29,16 @@ const ConnectShopify = ({
     handleStepChange,
     isProgress,
 }: ConnectShopifyProps) => {
-    console.log(data);
+    const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
     const platformOptions = [
         { value: "platform_1", label: "Platform 1" },
         { value: "platform_2", label: "Platform 2" },
         { value: "platform_3", label: "Platform 3" },
     ];
+
     const connectToShopify = async () => {
         SetLoading(true);
-        /* SetResponse(true); */
         try {
             const response = await fakeConnectShopifyAPI(20);
             const { shopify_store_id, shopify_store_name } = response;
@@ -49,12 +52,26 @@ const ConnectShopify = ({
             );
             SetResponse(true);
         } catch (err) {
-            /* setError(err.message); */
-            // Обработка ошибки
+            // Error handling (optional)
         } finally {
             SetLoading(false);
         }
     };
+
+    const handleSubmitWithoutShopify = () => {
+        setErrors({});
+        if (!data.shopify.shopify_store_id) {
+            setErrors({ platform: "Please select a platform." });
+            return;
+        }
+
+        SetLoading(true);
+        SetResponse(true);
+        setTimeout(() => {
+            SetLoading(false);
+        }, 2000);
+    };
+
     return (
         <>
             {isResponse ? (
@@ -187,7 +204,7 @@ const ConnectShopify = ({
                                     <AppFormGroup label="Platform">
                                         <AppSelect
                                             options={platformOptions}
-                                            onChange={(option) =>
+                                            onChange={(option) => {
                                                 updateFields(
                                                     {
                                                         shopify_store_id:
@@ -196,13 +213,24 @@ const ConnectShopify = ({
                                                             option.label,
                                                     },
                                                     "shopify"
-                                                )
-                                            }
+                                                );
+                                                setErrors({});
+                                            }}
                                             borderRadius="rounded"
                                             placeholder="Select platform"
+                                            isError={!!errors.platform}
                                         ></AppSelect>
+                                        {errors.platform && (
+                                            <p className="text-red-600">
+                                                {errors.platform}
+                                            </p>
+                                        )}
                                     </AppFormGroup>
-                                    <AppButton>Submit</AppButton>
+                                    <AppButton
+                                        onClick={handleSubmitWithoutShopify}
+                                    >
+                                        Submit
+                                    </AppButton>
                                 </div>
                             </div>
 

@@ -24,7 +24,6 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
     }
     function SetResponse(responseState: boolean) {
         setResponse(responseState);
-        console.log("isResponse", isResponse);
     }
     function next() {
         setCurrentStepIndex((i) => {

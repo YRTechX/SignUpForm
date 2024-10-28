@@ -21,6 +21,7 @@ interface AppSelectProps {
     paddingY?: string;
     disabled?: boolean;
     border?: string;
+    isError?: boolean;
 }
 
 const AppSelect: React.FC<AppSelectProps> = ({
@@ -38,6 +39,7 @@ const AppSelect: React.FC<AppSelectProps> = ({
     disabled = false,
     width = "w-full",
     border = "",
+    isError = false,
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<Option | null>(
@@ -74,7 +76,7 @@ const AppSelect: React.FC<AppSelectProps> = ({
                 onClick={() => setIsOpen(!isOpen)}
                 className={`cursor-pointer ${paddingX} ${paddingY} ${borderRadius} ${bgColor} ${
                     selectedOption ? color : "text-input-placeholder-color"
-                } ${fontSize} ${border}`}
+                } ${fontSize} ${border} ${isError ? "border-red-500" : ""}`}
             >
                 {selectedOption ? selectedOption.label : placeholder}
             </div>

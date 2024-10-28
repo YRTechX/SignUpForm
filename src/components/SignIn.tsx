@@ -4,12 +4,15 @@ import AppFormGroup from "@/components/UI/AppFormGroup";
 import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
 import { saveDataToLocalStorage, loginUser } from "@/utils/functions";
+import { useNavigate } from "react-router-dom";
+import { SignInProps } from "@/utils/interfaces";
 
-const SignIn = () => {
+const SignIn = ({ setIsLoading }: SignInProps) => {
     const [data, setData] = useState({ email: "", password: "" });
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1440);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleResize = () => {
@@ -45,14 +48,18 @@ const SignIn = () => {
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (validateFields()) {
-            const isAuthenticated = loginUser(data.email, data.password);
+            setIsLoading(true);
+
+            const isAuthenticated = await loginUser(data.email, data.password);
+
+            setIsLoading(false);
 
             if (isAuthenticated) {
                 setIsLoggedIn(true);
-                window.location.href = "/dashboard";
+                navigate("/welcome");
             } else {
                 setErrors({ login: "Invalid email or password." });
             }
