@@ -6,29 +6,8 @@ import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
-type CustomerCussesEmailData = {
-    shopify_store_id: string;
-    shopify_store_name: string;
-    non_shopify_platform_name?: string;
-    [key: string]: any;
-};
-
-type SignUpFormProps = {
-    currentStepIndex: number;
-    progress?: number;
-    isStepCompleted?: boolean;
-    isNextActive: boolean;
-    isMobile: boolean;
-    isFirstStep: boolean;
-    stepsLength: number;
-    next: () => void;
-    back: () => void;
-    updateFields: (
-        fields: Partial<CustomerCussesEmailData>,
-        path?: string
-    ) => void;
-    data: CustomerCussesEmailData;
-};
+import { fakeConnectGoogleAPI } from "@/utills/fakeApi";
+import { ConnectCSEmailData } from "@/utills/types";
 
 const ConnectCSEmail = ({
     currentStepIndex,
@@ -41,12 +20,33 @@ const ConnectCSEmail = ({
     isMobile,
     updateFields,
     data,
-}: SignUpFormProps) => {
+    isLoading,
+    loading,
+    response,
+    isResponse,
+}: ConnectCSEmailData) => {
     const platformOptions = [
         { value: "platform_1", label: "Platform email 1" },
         { value: "platform_2", label: "Platform email 2" },
         { value: "platform_3", label: "Platform email 3" },
     ];
+    const connectToGoogle = async () => {
+        loading(true);
+        /* setError(null); */
+        try {
+            const response = await fakeConnectGoogleAPI(20);
+            updateFields(
+                {
+                    gmail_address: response,
+                },
+                "customer_support_email"
+            );
+        } catch (err) {
+            /* setError(err.message); */
+        } finally {
+            loading(false);
+        }
+    };
     return (
         <>
             <div className="flex mb-6">
@@ -142,6 +142,7 @@ const ConnectCSEmail = ({
                             />
                         }
                         iconBgClasses="flex h-12 w-12 bg-white justify-center items-center rounded-sm"
+                        onClick={connectToGoogle}
                     >
                         Connect Gmail Account
                     </AppButton>

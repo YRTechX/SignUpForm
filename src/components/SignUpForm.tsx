@@ -3,23 +3,7 @@ import AppFormGroup from "@/components/UI/AppFormGroup";
 import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
-type UserData = {
-    email: string;
-    name: string;
-    password: string;
-};
-type SignUpFormProps = {
-    currentStepIndex: number;
-    progress?: number;
-    isStepCompleted?: boolean;
-    isNextActive: boolean;
-    isMobile: boolean;
-    isFirstStep: boolean;
-    stepsLength: number;
-    next: () => void;
-    back: () => void;
-    updateFields: (fields: Partial<UserData>) => void;
-};
+import { SignUpFormProps } from "@/utills/types";
 
 const SignUpForm = ({
     currentStepIndex,
@@ -31,6 +15,8 @@ const SignUpForm = ({
     back,
     isMobile,
     updateFields,
+    isLoading,
+    loading,
 }: SignUpFormProps) => {
     return (
         <>

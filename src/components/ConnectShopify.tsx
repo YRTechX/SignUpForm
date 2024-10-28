@@ -5,26 +5,7 @@ import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
-type ShopifyData = {
-    shopify_store_id: string;
-    shopify_store_name: string;
-    non_shopify_platform_name?: string;
-    [key: string]: any;
-};
-type SignUpFormProps = {
-    currentStepIndex: number;
-    progress?: number;
-    isStepCompleted?: boolean;
-    isNextActive: boolean;
-    isMobile: boolean;
-    isFirstStep: boolean;
-    stepsLength: number;
-    next: () => void;
-    back: () => void;
-    updateFields: (fields: Partial<ShopifyData>, path?: string) => void;
-    data: ShopifyData;
-};
-
+import { ConnectShopifyProps } from "@/utills/types";
 const ConnectShopify = ({
     currentStepIndex,
     isStepCompleted,
@@ -36,7 +17,11 @@ const ConnectShopify = ({
     isMobile,
     updateFields,
     data,
-}: SignUpFormProps) => {
+    isLoading,
+    loading,
+    response,
+    isResponse,
+}: ConnectShopifyProps) => {
     console.log(data);
     const platformOptions = [
         { value: "platform_1", label: "Platform 1" },
