@@ -18,8 +18,8 @@ const ConnectShopify = ({
     updateFields,
     data,
     isLoading,
-    loading,
-    response,
+    SetLoading,
+    SetResponse,
     isResponse,
 }: ConnectShopifyProps) => {
     console.log(data);

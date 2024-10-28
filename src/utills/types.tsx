@@ -13,9 +13,9 @@ export type ConnectCSEmailData = {
         path?: string
     ) => void;
     data: CustomerSupportEmailData;
-    loading: (loadingState: boolean) => void;
+    SetLoading: (loadingState: boolean) => void;
     isLoading: boolean;
-    response: (responseState: boolean) => void;
+    SetResponse: (responseState: boolean) => void;
     isResponse: boolean;
 };
 type UserData = {
@@ -34,9 +34,9 @@ export type SignUpFormProps = {
     next: () => void;
     back: () => void;
     updateFields: (fields: Partial<UserData>) => void;
-    loading: (loadingState: boolean) => void;
+    SetLoading: (loadingState: boolean) => void;
     isLoading: boolean;
-    response: (responseState: boolean) => void;
+    SetResponse: (responseState: boolean) => void;
     isResponse: boolean;
 };
 type CustomerSupportEmailData = {
@@ -64,8 +64,8 @@ export type ConnectShopifyProps = {
     back: () => void;
     updateFields: (fields: Partial<ShopifyData>, path?: string) => void;
     data: ShopifyData;
-    loading: (loadingState: boolean) => void;
+    SetLoading: (loadingState: boolean) => void;
     isLoading: boolean;
-    response: (responseState: boolean) => void;
+    SetResponse: (responseState: boolean) => void;
     isResponse: boolean;
 };

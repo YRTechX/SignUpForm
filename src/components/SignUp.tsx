@@ -6,6 +6,7 @@ import SignUpForm from "@/components/SignUpForm";
 import ConnectShopify from "@/components/ConnectShopify";
 import ConnectCSEmail from "@/components/ConnectCSEmail";
 import { FormData } from "@/utills/interfaces";
+import AppLoading from "@/components/UI/AppLoading";
 const INITIAL_DATA: FormData = {
     email: "",
     name: "",
@@ -74,13 +75,13 @@ const SignUp = () => {
         next,
         back,
         isLoading,
-        loading,
+        SetLoading,
         isResponse,
-        response,
+        SetResponse,
     } = useMultistepForm([
-        (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
-        (props) => <ConnectShopify {...props} updateFields={updateFields} />,
         (props) => <SignUpForm {...props} updateFields={updateFields} />,
+        (props) => <ConnectShopify {...props} updateFields={updateFields} />,
+        (props) => <ConnectCSEmail {...props} updateFields={updateFields} />,
         (props) => <div>Step 4 Content</div>,
     ]);
 
@@ -96,37 +97,41 @@ const SignUp = () => {
     }, []);
 
     return (
-        <div className="desktop:flex h-screen">
-            {!isMobile && (
-                <SignUpProgress
-                    currentStepIndex={currentStepIndex}
-                    isStepCompleted={isStepCompleted}
-                    isNextActive={isNextActive}
-                    isFirstStep={isFirstStep}
-                    next={next}
-                    back={back}
-                />
-            )}
+        <>
+            {isLoading && <AppLoading />}
 
-            <div className="flex flex-1 justify-center items-center bg-sign-up h-full">
-                <SignUpCard>
-                    {step({
-                        isMobile,
-                        currentStepIndex,
-                        next,
-                        back,
-                        isNextActive,
-                        isFirstStep,
-                        stepsLength,
-                        data,
-                        isLoading,
-                        isResponse,
-                        loading,
-                        response,
-                    })}
-                </SignUpCard>
+            <div className="desktop:flex h-screen">
+                {!isMobile && (
+                    <SignUpProgress
+                        currentStepIndex={currentStepIndex}
+                        isStepCompleted={isStepCompleted}
+                        isNextActive={isNextActive}
+                        isFirstStep={isFirstStep}
+                        next={next}
+                        back={back}
+                    />
+                )}
+
+                <div className="flex flex-1 justify-center items-center bg-sign-up h-full">
+                    <SignUpCard>
+                        {step({
+                            isMobile,
+                            currentStepIndex,
+                            next,
+                            back,
+                            isNextActive,
+                            isFirstStep,
+                            stepsLength,
+                            data,
+                            isLoading,
+                            isResponse,
+                            SetLoading,
+                            SetResponse,
+                        })}
+                    </SignUpCard>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

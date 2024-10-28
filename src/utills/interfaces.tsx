@@ -20,3 +20,6 @@ export interface FormData {
     shopify: ShopifyData;
     customer_support_email: CustomerSupportEmail;
 }
+export interface ResponseReceivedProps {
+    done: () => void;
+}

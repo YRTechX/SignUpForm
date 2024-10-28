@@ -19,10 +19,10 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
     const [isResponse, setResponse] = useState<boolean>(false);
 
     const isStepCompleted = (index: number) => !!progress[index];
-    function loading(loadingState: boolean) {
+    function SetLoading(loadingState: boolean) {
         setLoading(loadingState);
     }
-    function response(responseState: boolean) {
+    function SetResponse(responseState: boolean) {
         setLoading(responseState);
     }
     function next() {
@@ -67,9 +67,9 @@ export function useMultistepForm(steps: ((props: any) => ReactElement)[]) {
         progress,
         validateStep,
         isStepCompleted,
-        loading,
+        SetLoading,
         isLoading,
-        response,
+        SetResponse,
         isResponse,
     };
 }

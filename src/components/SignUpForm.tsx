@@ -16,7 +16,7 @@ const SignUpForm = ({
     isMobile,
     updateFields,
     isLoading,
-    loading,
+    SetLoading,
 }: SignUpFormProps) => {
     return (
         <>

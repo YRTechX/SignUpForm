@@ -1,7 +1,7 @@
 import { CheckIcon } from "@heroicons/react/solid";
 import AppButton from "@/components/UI/AppButton";
-
-const ResponseReceived = () => {
+import { ResponseReceivedProps } from "@/utills/interfaces";
+const ResponseReceived: React.FC<ResponseReceivedProps> = ({ done }) => {
     return (
         <>
             <div className="bg-green-color h-20 w-20 mb-10">
@@ -14,7 +14,7 @@ const ResponseReceived = () => {
                 Thank you for your interest in Chad! We’ll be hard at work
                 building integrations to support your platform.
             </p>
-            <AppButton>Create account</AppButton>
+            <AppButton onClick={done}>Create account</AppButton>
         </>
     );
 };
