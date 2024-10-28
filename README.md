@@ -44,3 +44,23 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+In this project I used craco for building project and using aliases path.
+
+For css framework I used Tailwind + variables for colors in globals.css, all colors and custom values were registered in tailwindconfig for proper usind of tailwind way
+
+There are 3 routes /registration, /login and /welcome
+
+For simulating api calls I used function with promise, you can find it in utills/fakeApi
+
+Storing data in userData field in localStorage
+
+When all 4 steps are done in registration there is redirect to /login, if login successfull redirect to /welcome
+
+If there is no such login or password in localstorage userData there will be error during login
+
+Please payAttention that fake api functions have 20% chance of error (you can set it by passing errorProbability: number parameter in those functions)
+
+The one thing, that is not implemented are error handling from those fake api functions
+
+Thanks
