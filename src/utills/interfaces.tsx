@@ -25,3 +25,6 @@ export interface ResponseReceivedProps {
     handleStepChange: (currentStepIndex: number, status: boolean) => void;
     currentStepIndex: number;
 }
+export interface ReadyToGoProps {
+    isMobile: boolean;
+}
