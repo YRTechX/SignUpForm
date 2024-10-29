@@ -1,7 +1,6 @@
 {
     "name": "luna-test-task",
     "version": "0.1.0",
-    "homepage": "https://yrtechx.github.io/SignUpForm",
     "private": true,
     "dependencies": {
         "@craco/craco": "^7.1.0",
