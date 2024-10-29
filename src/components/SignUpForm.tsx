@@ -5,6 +5,7 @@ import AppButton from "@/components/UI/AppButton";
 import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { SignUpFormProps } from "@/utils/types";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = ({
     currentStepIndex,
@@ -24,7 +25,7 @@ const SignUpForm = ({
     isProgress,
 }: SignUpFormProps) => {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
+    const navigate = useNavigate();
     const validateFields = () => {
         const newErrors: { [key: string]: string } = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -130,7 +131,16 @@ const SignUpForm = ({
             <div className="mt-4">
                 <p className="text-center text-xs text-gray-color">
                     Already have an account?{" "}
-                    <a className="text-link-color hover:opacity-80">Login</a>
+                    <a
+                        href="#"
+                        className="text-link-color hover:opacity-80"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            navigate("/login");
+                        }}
+                    >
+                        Login
+                    </a>
                 </p>
             </div>
         </>
