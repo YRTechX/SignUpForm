@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/SignUpForm/static/css/main.02d5fbc3.css",
-    "main.js": "/SignUpForm/static/js/main.55dcd52d.js",
-    "static/media/signUpBg.png": "/SignUpForm/static/media/signUpBg.e62eca779d46db598140.png",
-    "static/media/slick.svg": "/SignUpForm/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/SignUpForm/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/SignUpForm/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/SignUpForm/static/media/slick.295183786cd8a1389865.woff",
-    "index.html": "/SignUpForm/index.html",
-    "main.02d5fbc3.css.map": "/SignUpForm/static/css/main.02d5fbc3.css.map",
-    "main.55dcd52d.js.map": "/SignUpForm/static/js/main.55dcd52d.js.map"
+    "main.css": "/static/css/main.b570ea65.css",
+    "main.js": "/static/js/main.55dcd52d.js",
+    "static/media/signUpBg.png": "/static/media/signUpBg.e62eca779d46db598140.png",
+    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/index.html",
+    "main.b570ea65.css.map": "/static/css/main.b570ea65.css.map",
+    "main.55dcd52d.js.map": "/static/js/main.55dcd52d.js.map"
   },
   "entrypoints": [
-    "static/css/main.02d5fbc3.css",
+    "static/css/main.b570ea65.css",
     "static/js/main.55dcd52d.js"
   ]
 }
