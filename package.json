@@ -1,6 +1,7 @@
 {
     "name": "luna-test-task",
     "version": "0.1.0",
+    "homepage": "https://yrtechx.github.io/SignUpForm",
     "private": true,
     "dependencies": {
         "@craco/craco": "^7.1.0",
@@ -23,6 +24,8 @@
         "web-vitals": "^2.1.4"
     },
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "start": "craco start",
         "build": "craco build",
         "test": "craco test",
@@ -49,6 +52,7 @@
     "devDependencies": {
         "@types/react-slick": "^0.23.13",
         "@types/react-transition-group": "^4.4.11",
+        "gh-pages": "^6.2.0",
         "tailwindcss": "^3.4.14"
     }
 }
