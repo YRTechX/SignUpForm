@@ -9,7 +9,7 @@ import AppSelect from "@/components/UI/AppSelect";
 import { fakeConnectGoogleAPI } from "@/utils/fakeApi";
 import { ConnectCSEmailData } from "@/utils/types";
 import ResponseReceived from "@/components/ResponseReceived";
-import { useState } from "react"; // Не забудьте импортировать useState
+import { useState } from "react";
 
 const ConnectCSEmail = ({
     currentStepIndex,
@@ -48,7 +48,6 @@ const ConnectCSEmail = ({
             );
             SetResponse(true);
         } catch (err) {
-            // Обработка ошибки, если нужно
         } finally {
             SetLoading(false);
         }
@@ -247,7 +246,6 @@ const ConnectCSEmail = ({
                                 <p className="text-center text-xs text-gray-color">
                                     Actually use Gmail?{" "}
                                     <a
-                                        href="#"
                                         className="text-link-color hover:opacity-80"
                                         onClick={() =>
                                             updateFields(

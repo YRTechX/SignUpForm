@@ -121,7 +121,7 @@ const SignIn = ({ setIsLoading }: SignInProps) => {
             <div className="mt-4">
                 <p className="text-center text-xs text-gray-color">
                     Don’t have an account?{" "}
-                    <a href="#" className="text-link-color hover:opacity-80">
+                    <a className="text-link-color hover:opacity-80">
                         Join the waitlist
                     </a>
                 </p>

@@ -238,7 +238,6 @@ const ConnectShopify = ({
                                 <p className="text-center text-xs text-gray-color">
                                     Actually use Shopify?{" "}
                                     <a
-                                        href="#"
                                         className="text-link-color hover:opacity-80"
                                         onClick={() =>
                                             updateFields(

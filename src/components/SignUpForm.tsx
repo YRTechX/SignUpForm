@@ -130,9 +130,7 @@ const SignUpForm = ({
             <div className="mt-4">
                 <p className="text-center text-xs text-gray-color">
                     Already have an account?{" "}
-                    <a href="#" className="text-link-color hover:opacity-80">
-                        Login
-                    </a>
+                    <a className="text-link-color hover:opacity-80">Login</a>
                 </p>
             </div>
         </>

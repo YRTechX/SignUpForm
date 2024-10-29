@@ -47,7 +47,6 @@ const Welcome = () => {
                         <p className="text-center text-xs text-gray-color">
                             Not {userData ? userData.email : ""}?{" "}
                             <a
-                                href="#"
                                 className="text-link-color hover:opacity-80"
                                 onClick={handleLogout}
                             >
