@@ -9,6 +9,8 @@ import { FormData } from "@/utils/interfaces";
 import AppLoading from "@/components/UI/AppLoading";
 import ReadyToGo from "@/components/ReadyToGo";
 import { saveDataToLocalStorage } from "@/utils/functions";
+import MobileSignUpProgress from "@/components/MobileSignUpProgress";
+import logoImage from "@/assets/images/chadLogo.png";
 const INITIAL_DATA: FormData = {
     email: "",
     name: "",
@@ -124,6 +126,26 @@ const SignUp = () => {
 
                 <div className="flex flex-1 justify-center items-center bg-sign-up h-full">
                     <SignUpCard>
+                        {!isResponse && (
+                            <div className="flex mb-6">
+                                <img src={logoImage} alt="logo" />
+                                <div className="text-logo-color font-bold text-2xl">
+                                    Chad
+                                </div>
+                            </div>
+                        )}
+
+                        {isMobile && !isResponse && (
+                            <MobileSignUpProgress
+                                currentStepIndex={currentStepIndex}
+                                isNextActive={isNextActive}
+                                isFirstStep={isFirstStep}
+                                next={next}
+                                back={back}
+                                stepsLength={stepsLength}
+                                isProgress={isProgress}
+                            />
+                        )}
                         {step({
                             isMobile,
                             currentStepIndex,

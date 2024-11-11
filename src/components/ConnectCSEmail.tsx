@@ -1,9 +1,6 @@
-import logoImage from "@/assets/images/chadLogo.png";
 import googleIcon from "@/assets/images/googleIcon.png";
 import AppFormGroup from "@/components/UI/AppFormGroup";
-import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
-import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
 import { fakeConnectGoogleAPI } from "@/utils/fakeApi";
@@ -13,21 +10,13 @@ import { useState } from "react";
 
 const ConnectCSEmail = ({
     currentStepIndex,
-    isStepCompleted,
-    isNextActive,
-    stepsLength,
-    isFirstStep,
-    next,
-    back,
     isMobile,
     updateFields,
     data,
-    isLoading,
     SetLoading,
     SetResponse,
     isResponse,
     handleStepChange,
-    isProgress,
 }: ConnectCSEmailData) => {
     const [errors, setErrors] = useState<{ platform?: string }>({});
     const platformOptions = [
@@ -77,24 +66,6 @@ const ConnectCSEmail = ({
                 />
             ) : (
                 <>
-                    <div className="flex mb-6">
-                        <img src={logoImage} alt="logo" />
-                        <div className="text-logo-color font-bold text-2xl">
-                            Chad
-                        </div>
-                    </div>
-
-                    {isMobile && (
-                        <MobileSignUpProgress
-                            currentStepIndex={currentStepIndex}
-                            isNextActive={isNextActive}
-                            isFirstStep={isFirstStep}
-                            next={next}
-                            back={back}
-                            stepsLength={stepsLength}
-                            isProgress={isProgress}
-                        />
-                    )}
                     {data.customer_support_email.gmail ? (
                         <>
                             <h2 className="text-2xl font-semibold mb-4 text-heading-color">

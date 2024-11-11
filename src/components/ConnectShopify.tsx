@@ -1,8 +1,5 @@
-import logoImage from "@/assets/images/chadLogo.png";
 import AppFormGroup from "@/components/UI/AppFormGroup";
-import AppInput from "@/components/UI/AppInput";
 import AppButton from "@/components/UI/AppButton";
-import MobileSignUpProgress from "@/components/MobileSignUpProgress";
 import { CheckIcon } from "@heroicons/react/solid";
 import AppSelect from "@/components/UI/AppSelect";
 import { ConnectShopifyProps } from "@/utils/types";
@@ -12,22 +9,13 @@ import { useState } from "react";
 
 const ConnectShopify = ({
     currentStepIndex,
-    isStepCompleted,
-    isNextActive,
-    stepsLength,
-    isFirstStep,
-    next,
-    back,
     isMobile,
     updateFields,
     data,
-    isLoading,
     SetLoading,
     SetResponse,
     isResponse,
-    validateStep,
     handleStepChange,
-    isProgress,
 }: ConnectShopifyProps) => {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
@@ -82,24 +70,6 @@ const ConnectShopify = ({
                 />
             ) : (
                 <>
-                    <div className="flex mb-6">
-                        <img src={logoImage} alt="logo" />
-                        <div className="text-logo-color font-bold text-2xl">
-                            Chad
-                        </div>
-                    </div>
-
-                    {isMobile && (
-                        <MobileSignUpProgress
-                            currentStepIndex={currentStepIndex}
-                            isNextActive={isNextActive}
-                            isFirstStep={isFirstStep}
-                            next={next}
-                            back={back}
-                            stepsLength={stepsLength}
-                            isProgress={isProgress}
-                        />
-                    )}
                     {data.shopify.shopify ? (
                         <>
                             <h2 className="text-2xl font-semibold mb-4 text-heading-color">

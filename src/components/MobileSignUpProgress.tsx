@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import AppButton from "@/components/UI/AppButton";
 import { CSSTransition } from "react-transition-group";
 import {
@@ -18,6 +18,7 @@ const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
     back,
     isProgress,
 }) => {
+    const progressBarHandlesRef = useRef(null);
     return (
         <div className="flex flex-col mb-8">
             <h2 className="text-xs mb-2 text-gray-color">
@@ -42,8 +43,12 @@ const MobileSignUpProgress: React.FC<MobileSignUpProgressProps> = ({
                 timeout={500}
                 classNames="fade"
                 unmountOnExit
+                nodeRef={progressBarHandlesRef}
             >
-                <div className="flex justify-between">
+                <div
+                    className="flex justify-between"
+                    ref={progressBarHandlesRef}
+                >
                     <AppButton
                         onClick={back}
                         disabled={isFirstStep}
